@@ -1,0 +1,76 @@
+Create a 16:9 widescreen presentation slide illustration (1920x1080 aspect). Output ONLY the image, no extra text response.
+
+## Visual Style: Hand-drawn Warm — friendly editorial, bright white base, seminar-grade
+
+Based on a warm, approachable hand-drawn design system (family / "let's try it together" mood).
+Casual and inviting, but still clean and seminar-grade. This is a SLIDE for a live seminar and
+must carry a short Japanese title + a few keyword tags.
+
+## BACKGROUND (important adjustment)
+- Background is BRIGHT WHITE base (#FFFFFF to a very light off-white #FCFCFA). Airy, light, lots
+  of white space. NOT cream, NOT beige — keep it crisp and bright.
+- Optionally a few very subtle light-gray or pale-teal hand-drawn texture marks in corners, but
+  the dominant feel is clean white and open.
+
+## ILLUSTRATION
+- Hand-drawn line illustration style: warm, slightly loose ink/pen linework with a friendly,
+  editorial magazine-illustration quality. Human and inviting, with confident loose linework
+  that has VARYING WEIGHT (some strokes thicker, some thin) — not uniform thin outlines.
+
+### People (important — taller proportions)
+- Draw people with REALISTIC, TALLER proportions: about 5–6 heads tall, NOT chibi / NOT
+  big-head cartoon. Natural body proportions, like a warm grown-up editorial illustration.
+- Recurring family cast (keep consistent across slides):
+  Mom — teal/turquoise top; Son — yellow hoodie; Dad — black/charcoal clothes.
+  Friendly, relaxed, everyday expressions and poses (thinking, trying, talking, relaxing).
+- Warm hand-drawn line art with flat color fills inside the lines.
+
+### Mascot (hand-drawn "atelier morning" flavor, not a generic robot)
+- When a mascot is helpful, draw a SOFT, hand-drawn SAGE-GREEN character — gentle, rounded,
+  matte, with the warm "atelier morning" hand-touch (calm, organic, a little clay-like in
+  feeling but still flat hand-drawn line art). Sage body (#8B9A7D), with subtle rose/gold
+  touches. NOT a shiny metallic generic robot, NOT cyber, NOT chrome. Quiet and friendly.
+
+### Other subjects
+- Everyday objects (notebooks, devices, coffee, tools), screens, simple props — warm hand-drawn
+  line art with flat color fills. Not photorealistic, not 3D, not isometric.
+
+## COLOR PALETTE (accents on white — "atelier morning")
+- Base: BRIGHT WHITE / near-white (keep it crisp and light — NOT cream, NOT beige).
+- Accent colors (flat fills and hand-drawn marks on the white base). Blend the friendly design
+  system with a calm "atelier morning" palette:
+  Teal / turquoise (#2BB7B7) and SAGE green (#8B9A7D) as primary accents,
+  warm gold (#C4A057) and soft yellow (#F4C84A),
+  dusty rose / salmon (#E8A598) and a sparing coral/red (#E8604C) for a single pop,
+  with charcoal ink (#2C3330) for linework and text.
+- "色は道具のように点在する": colors appear in SMALL areas as accents; the bright white base
+  dominates (~70%+). Calm, warm, intelligent — not neon, not oversaturated, not childish.
+- Flat colors, no heavy gradients.
+
+## DECORATION PARTS & INFORMATION DENSITY
+- Use the design system's decoration vocabulary a bit MORE GENEROUSLY than a bare minimum
+  (the reference system is lively): hand-drawn strokes/underlines, speech bubbles & balloons,
+  rough circles/shapes, scribble fills, small dot or grid-of-dots textures, star/sparkle
+  accents, simple frames/boxes, gentle arrows, small annotation marks scattered around.
+- Slightly HIGHER information density is welcome — a few more small labeled props, little
+  callouts, or secondary hand-drawn elements that enrich the scene — BUT the white base must
+  still read bright and the ONE focal idea must stay clear. Lively, not cluttered.
+
+## TYPOGRAPHY (text rendering)
+- Title: bold, friendly rounded gothic feel (like a warm Japanese display gothic). Charcoal ink.
+- Keyword tags: small clean labels, optionally on rounded tag/pill shapes or in hand-drawn
+  speech bubbles, in the accent colors.
+- TEXT RULE: render only the Japanese TITLE and the specified short keyword tags. No paragraphs,
+  no taglines, no invented words. Japanese renders reliably; keep it short and exact.
+
+## CROSS-SLIDE CONSISTENCY
+- Same bright white base, same hand-drawn line quality with varying weight, same sage/teal/gold/
+  rose accent set, same taller 5–6-head people (Mom=teal, Son=yellow, Dad=black), same soft sage
+  mascot, same decoration vocabulary, same friendly "atelier morning" tone on every slide.
+
+## Layout
+- ONE clear focal idea per slide. Generous white space (the bright base is a feature).
+- Title placed cleanly (top or in a hand-drawn frame/bubble). Friendly, warm, uncluttered,
+  approachable — like an inviting family-facing explainer, but tidy and seminar-ready.
+
+## Content to visualize (per-slide concept follows):

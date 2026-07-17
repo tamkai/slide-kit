@@ -1,0 +1,13 @@
+{
+  "name": "slide-kit",
+  "owner": {
+    "name": "tamkai"
+  },
+  "plugins": [
+    {
+      "name": "slide-kit",
+      "source": "./",
+      "description": "構成をつくる → スライドにする の二段階でスライドを作るキット"
+    }
+  ]
+}

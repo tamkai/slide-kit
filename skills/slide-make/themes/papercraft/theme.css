@@ -1,0 +1,201 @@
+/* =========================================================
+   papercraft theme — theme.css
+   「アトリエの朝」/ sage + gold + terracotta + cream
+   1280x720 / メタ情報(Day/Block/ページ番号)は表示しない
+   ---------------------------------------------------------
+   このテーマは実プロジェクトで完成済みの
+   master.css をそのまま資産として持ち込んでいる。変数は独自系統
+   (--ink / --sage 等)。共通の semantic-classes
+   (--brand-*)とも最低限互換させるため、冒頭にブリッジ定義を置く。
+   完全な --brand-* 化はしない(動いている CSS を壊さないため)。
+   ========================================================= */
+
+:root {
+  /* --- papercraft 固有変数(正典) --- */
+  --ink:        #3A3F38;   /* 主役テキスト */
+  --ink-soft:   #6E6A60;   /* 補助テキスト */
+  --ink-muted:  #9A9384;   /* 控えめテキスト */
+  --sage:       #8B9A7D;   /* アクセント1 */
+  --sage-deep:  #6F7E63;   /* アクセント1 濃 */
+  --gold:       #C4A057;   /* アクセント2 */
+  --gold-deep:  #A8863F;   /* アクセント2 濃 */
+  --terracotta: #C77B57;   /* アクセント3 */
+  --cream:      #F3EEE3;   /* 地の色 */
+  --card:       #FBF8F1;   /* カード面 */
+
+  /* --- 共通 semantic-classes へのブリッジ --- */
+  /* _base/semantic-classes.css が参照する --brand-* を
+     papercraft の色にマッピング。Pattern 44-50 等を使う場合の互換用。 */
+  --brand-ink:    var(--ink);
+  --brand-paper:  var(--cream);
+  --brand-accent: var(--gold);     /* 効かせ色 = ゴールド */
+  --brand-muted:  var(--ink-muted);
+  --brand-subtle: var(--card);
+
+  --font-display: 'Noto Sans JP';
+  --font-body:    'Noto Sans JP';
+  --font-accent:  'Inter';
+
+  /* ジャンプ率(テキストブック寄りに抑制的) */
+  --text-xs:   0.78rem;
+  --text-sm:   1rem;
+  --text-md:   1.3rem;
+  --text-lg:   2.2rem;
+  --text-xl:   3.2rem;
+  --text-2xl:  4.6rem;
+  --text-hero: 8rem;
+
+  --placeholder-border-color:  var(--sage);
+  --placeholder-hatch-color-a: var(--card);
+  --placeholder-hatch-color-b: var(--cream);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #2a2a2a;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 24px;
+}
+
+/* --- スライド枠 --- */
+.slide {
+  width: 1280px; height: 720px; position: relative;
+  background-size: cover; background-position: center;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+}
+/* 背景パスは theme.css 基準(papercraft/)からの相対 = assets/backgrounds/ */
+.bg-cover   { background-image: url('assets/backgrounds/bg_01_cover.jpg'); }
+.bg-corners { background-image: url('assets/backgrounds/bg_03_content_corners.jpg'); }
+.bg-wrap    { background-image: url('assets/backgrounds/bg_04_wrap.jpg'); }
+.bg-minimal { background-image: url('assets/backgrounds/bg_05_minimal.jpg'); }
+
+.inner {
+  position: absolute; inset: 0;
+  padding: 64px 84px;
+  display: flex; flex-direction: column;
+}
+
+/* --- タイトル系 --- */
+.eyebrow {
+  font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.title {
+  font-weight: 900; color: var(--ink);
+  letter-spacing: 0.04em; line-height: 1.3;
+}
+.title.lg  { font-size: 3.2rem; }
+.title.md  { font-size: 2.7rem; }
+.title.sm  { font-size: 2.2rem; }
+.title .accent {
+  background: linear-gradient(to top, rgba(196,160,87,0.38) 0.32em, transparent 0.32em);
+}
+.title-rule {
+  width: 52px; height: 4px; border-radius: 2px;
+  background: var(--sage); margin-top: 18px;
+}
+.title-rule.center { margin-left: auto; margin-right: auto; }
+
+.subtitle {
+  font-weight: 500; font-size: 1.3rem; color: var(--ink-soft);
+  line-height: 1.7; letter-spacing: 0.02em;
+}
+
+/* --- カード(3軸 / グリッド共通) --- */
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  border: 1px solid rgba(110,106,96,0.12);
+  box-shadow: 0 10px 24px rgba(58,63,56,0.08);
+  padding: 32px 26px 28px;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.card-no {
+  position: absolute; top: 24px; right: 26px;
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 2.2rem; color: rgba(110,106,96,0.14); line-height: 1;
+}
+
+/* --- アイコン: 裏の色面 + Font Awesome --- */
+.icon-wrap {
+  width: 72px; height: 72px; border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; margin-bottom: 18px; flex-shrink: 0;
+}
+.icon-wrap .blob {
+  position: absolute; inset: 0; border-radius: 20px; opacity: 0.92;
+}
+.icon-wrap i { position: relative; z-index: 2; font-size: 1.8rem; color: #FBF8F1; }
+.blob-sage       { background: var(--sage); }
+.blob-gold       { background: var(--gold); }
+.blob-terracotta { background: var(--terracotta); }
+
+/* アイコン小(行頭などに使う円形) */
+.icon-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #FBF8F1; font-size: 1rem; flex-shrink: 0;
+}
+.dot-sage { background: var(--sage); }
+.dot-gold { background: var(--gold); }
+.dot-terracotta { background: var(--terracotta); }
+
+/* --- 下部の帯 --- */
+.footer-band {
+  background: rgba(139,154,125,0.16);
+  border-radius: 14px;
+  padding: 16px 28px;
+  display: flex; align-items: center; gap: 16px;
+}
+.footer-band .fb-icon {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--sage); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #FBF8F1; font-size: 0.9rem;
+}
+.footer-band .fb-text { font-size: 0.98rem; color: var(--ink); font-weight: 500; }
+.footer-band .fb-text b { font-weight: 900; color: var(--sage-deep); }
+
+/* --- 引用符(対句スライド用) --- */
+.quote-mark {
+  font-family: 'Noto Sans JP', sans-serif; font-weight: 700;
+  font-size: 9rem; color: var(--gold); opacity: 0.2; line-height: 1;
+}
+
+/* --- 進捗ドット(章扉用) --- */
+.progress-dots { display: flex; gap: 10px; justify-content: center; }
+.progress-dots span {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(110,106,96,0.2);
+}
+.progress-dots span.on { background: var(--sage); }
+
+/* --- 2カラム比較(ATL-2) --- */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.compare-col {
+  background: var(--card); border-radius: 18px;
+  border: 1px solid rgba(110,106,96,0.12);
+  box-shadow: 0 10px 24px rgba(58,63,56,0.08);
+  padding: 30px 30px 26px;
+}
+.compare-label {
+  font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 14px;
+}
+
+/* --- 印刷 / PDF: 背景画像・色を省略させない --- */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: #fff; padding: 0; display: block; }
+  /* 印刷エンジンは box-shadow のぼかしを正しく描けず、角丸を無視した
+     四角いベタ面が出る。印刷時は全要素の影を消し、共通カードは
+     輪郭をボーダーで保つ。 */
+  * { box-shadow: none !important; }
+  .card,
+  .compare-col { border: 1px solid rgba(110,106,96,0.18) !important; }
+}

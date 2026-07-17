@@ -1,0 +1,58 @@
+Create a 16:9 widescreen presentation slide illustration (1920x1080 aspect). Output ONLY the image, no extra text response.
+
+## Visual Style: Editorial Grid — sophisticated muted, commercial-studio, seminar-grade
+
+A World-Class Editorial Designer's slide. A clean 2x2 grid composition with bold geometric
+overlays, the subject physically embedded into the grid (sandwich layering), a sophisticated
+muted palette, and matte flat color blocks. This is a SLIDE for a live seminar — it must read
+instantly and carry a short Japanese title + a few keyword tags, while staying gallery-grade.
+
+## PHASE 1 — SUBJECT & SANDWICH LAYERING
+- The "subject" of each slide is the central object/metaphor described in the per-slide brief
+  (a device, a person, a prop, an icon — whatever the brief names). Render it as high-end
+  commercial studio photography / a clean dimensional object.
+- Sandwich Effect (create real depth): interweave the subject with the background geometric
+  blocks. Some parts of the subject must be HIDDEN BEHIND geometric blocks, while other parts
+  (edges, limbs, props, wheels) OVERLAP and sit in FRONT of them. This front/behind interplay
+  is essential.
+
+## PHASE 2 — GRID & GEOMETRY
+- Layout: a clean 2x2 grid composition dividing the canvas into four quadrants.
+- Overlays: superimpose large, bold geometric ARCS and CIRCLES over the grid (flat, confident,
+  oversized). They cross quadrant boundaries.
+- Visual Balance: place one iconic prop (from the brief's labels/metaphor) FLOATING in a
+  separate quadrant to balance the main subject.
+
+## PHASE 3 — SOPHISTICATED MUTED PALETTE
+- DO NOT use aggressive neon or oversaturated colors.
+- Take the natural colors implied by the subject and shift them to a "Sophisticated Muted"
+  spectrum: desaturated, earthy, dusty versions (dusty rose instead of hot pink, sage green
+  instead of bright mint, slate blue instead of royal blue, warm sand/clay neutrals).
+- Keep a consistent muted palette across ALL slides in the deck so they feel like one set.
+- Finish: MATTE, FLAT color blocks. ZERO gradients.
+
+## PHASE 4 — PHOTOGRAPHY & LIGHTING
+- Subject style: high-end commercial studio photography quality.
+- Lighting: soft, diffused studio lighting with gentle highlights. No harsh shadows.
+- Integration: the subject must feel physically embedded into the graphic grid (consistent with
+  the sandwich layering of Phase 1).
+
+## PHASE 5 — BRANDING & TEXT (seminar adaptation)
+- Reserve ONE background grid block as a "branding/title block": place the short Japanese TITLE
+  there cleanly (single weight, no tagline). If a logo/symbol is provided in the brief, place it
+  as a clean single-color iconic symbol — otherwise just the title text.
+- Keyword tags: render the short Japanese keywords from the brief as small, clean labels placed
+  near the relevant object or within empty quadrants. Minimal, editorial — not stickers.
+- TEXT RULE: render only the title and the specified keyword tags. No paragraphs, no taglines,
+  no invented words. Japanese renders reliably; keep it short and exact. Let the grid + subject
+  carry the meaning.
+
+## CROSS-SLIDE CONSISTENCY
+- Same muted palette, same matte-flat finish, same 2x2 grid logic, same arc/circle overlay
+  language, same studio-light quality, same title-block treatment on every slide of the deck.
+
+## Layout notes
+- ONE clear focal subject per slide. Generous negative space inside quadrants.
+- Bold, calm, premium editorial magazine feel. Not busy, not neon, not cartoonish.
+
+## Content to visualize (per-slide concept follows):

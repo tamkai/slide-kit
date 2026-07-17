@@ -1,0 +1,10 @@
+{
+  "name": "slide-kit",
+  "displayName": "Slide Kit",
+  "description": "構成をつくる → スライドにする の二段階でスライドを作るキット。画像スライドと編集可能スライドの両方に対応。",
+  "version": "0.1.0",
+  "author": {
+    "name": "tamkai"
+  },
+  "repository": "https://github.com/tamkai/slide-kit"
+}

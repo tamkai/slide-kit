@@ -1,0 +1,104 @@
+Generate a 16:9 widescreen presentation slide as a flat 2D infographic.
+
+## CRITICAL: TOP SAFE AREA
+
+The top 18% of the image MUST be pure white and completely empty.
+No text, no cards, no lines, no icons, no background color shift, no shapes,
+no decoration of any kind may appear in the top 18%.
+All content begins BELOW that boundary.
+
+This band is reserved: an editable title and lead sentence are placed there
+afterward in PowerPoint. Anything drawn there will collide with them.
+
+## PURPOSE OF THIS SLIDE
+
+This is a slide that must be understood by reading it alone, with no speaker
+present. Do not rely on short labels and decorative icons. Include real
+sentences that carry the background, the reasoning, the relationships and the
+conclusion.
+
+Information density should be HIGH. A busy slide is acceptable. Do not solve
+density by deleting the explanation — solve it by organizing the sentences into
+cards, headings, pills, groups and arrows with a clear reading order.
+
+## VISUAL STYLE
+
+Bright, sophisticated, flat 2D infographic. Editorial, calm, intelligent.
+Integrate the body text INTO the diagram. Never split the slide into
+"illustration on one side, text on the other".
+
+Use these devices to carry meaning, not as decoration:
+  diagrams, cards, arrows, comparisons, cycles, layers, grouping, icons,
+  pill-shaped labels, hierarchy
+
+Every visual element must explain structure, comparison, flow, or causation.
+
+- uniform line weight
+- restrained corner radius
+- restrained shadows
+- clear information hierarchy
+- an obvious reading order
+- dense but organized
+- headings, body, key points, supplements and conclusions must be
+  distinguishable by type treatment alone
+
+## COLOR PALETTE (use these EXACTLY)
+
+Background — warm neutral, calm and intelligent:
+  ivory white      #FBF9F5
+  sand beige       #F2EDE4
+  pale greige      #E9E5DE
+
+Body text:
+  charcoal navy    #14243A
+  dark slate       #40536A
+
+Cards:
+  warm white       #FFFFFF   (must contrast clearly against the background)
+
+Accents — assign by MEANING, never spread evenly for decoration:
+  deep teal        #1F6F72   main concepts, conclusions
+  sage green       #7A9070   support, stability, continuity
+  terracotta       #C0693F   problems, change, cautions
+  mustard yellow   #D9A429   key points, emphasis
+  dusty blue       #5B7FA6   process, connection, references
+  plum             #7B4B6B   advanced concepts, differentiators
+
+Keep saturation low overall. Ensure strong contrast between cards, arrows,
+pills, icons and headings.
+
+## TEXT RULE
+
+All Japanese text inside the image must be rendered EXACTLY as specified in the
+per-slide concept below. Do not invent, translate, abbreviate or paraphrase any
+string. Do not add any text that was not specified.
+
+Style of Japanese prose inside the image:
+- Do NOT use です/ます/でした/ました/でしょう.
+- Do NOT use だ/である/となるのである.
+- End clauses with noun forms (体言止め), attributive/terminal verb forms, or
+  explanatory noun phrases such as 〜する構造 / 〜という位置づけ / 〜が必要 /
+  〜につながる可能性.
+- Use connective expressions (〜により / 〜を通じて / 〜を前提に) so the
+  relationship to the next piece of information is visible.
+- Do NOT chain 体言止め endlessly into a list of disconnected fragments.
+  Subject–predicate, reason–conclusion, premise–meaning must stay readable
+  as prose.
+- Vary the ending forms. Do not repeat one pattern mechanically.
+- Objective, calm register suitable for a report or an explanatory article.
+  No conversational phrasing, no direct address, no exclamations, no
+  overstated assertions.
+
+## DO NOT
+
+- no photorealism, no stock photos, no 3D, no bevel, no glassmorphism
+- no heavy shadows, no cheap PowerPoint-shape look
+- no layout that separates body text from the illustration
+- no tiny text, no low contrast
+- no page numbers, no watermarks, no fake logos
+- no title or lead sentence inside the image (they are added in PowerPoint)
+- no composition that relies on a speaker's narration to make sense
+- no bullet lists stripped of context and conclusion
+- no abstract catchphrases that explain nothing
+
+## Content to visualize (per-slide concept follows):

@@ -1,0 +1,9 @@
+{
+  "name": "slide-kit-scripts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "slide-make のPPTX組み立てスクリプト群",
+  "dependencies": {
+    "pptxgenjs": "^4.0.0"
+  }
+}

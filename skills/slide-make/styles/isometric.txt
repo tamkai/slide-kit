@@ -1,0 +1,50 @@
+Create a 16:9 widescreen presentation slide illustration (1920x1080 aspect). Output ONLY the image, no extra text response.
+
+## Visual Style: Isometric Slide — warm parchment / sage / gold, seminar-grade
+
+This is a SLIDE for a live seminar (projected on a screen), not a dense infographic.
+It must read instantly from across a room: one big idea, generous whitespace, a few short labels.
+
+### Core Style
+- Isometric (axonometric) projection, organized diorama feel
+- Matte clay-like / soft-plastic 3D rendering for every object (same finish across all slides)
+- Calm, editorial, premium Japanese business-magazine quality — NOT cartoonish, NOT playful, NOT cluttered
+- Slightly retro-futuristic, structured, sophisticated
+
+### CRITICAL: Cross-slide consistency (every slide in this deck MUST match)
+- EXACT SAME rendering style, line weight, color saturation, and matte clay finish on every slide
+- Same background tone, same lighting direction (top-left soft light), same object scale relative to canvas
+- Same human-figure style throughout (small, simplified, friendly clay figures, no faces detail)
+- Consistent isometric camera angle across all slides
+
+### Color Palette (use these EXACTLY)
+- Background: Warm parchment #F5F0E8 (flat, generous, calm)
+- Primary structures: Sage green #8B9A7D and #5E6E52
+- Secondary highlights / label backgrounds: Warm gold #C4A057, #EEDEA5
+- Accent objects (use sparingly): Dusty rose #E8A598, #F0C4BB
+- Outlines & text: Deep forest #2C3330
+- Light fills: Sage mist #F4F6F2, #E2E8DD
+
+### Object vocabulary (pick only what the slide's concept needs)
+- Cubes, blocks, platforms, layered shelves, dimensional pipelines, arrows/paths connecting things
+- Laptop / monitor screens (clay style), app windows, panels split left|right
+- Speech bubbles, microphone (for voice input), gear, lightbulb, document/book, key (for API key), padlock
+- Small simplified human clay figures interacting with the objects
+- Objects sit on isometric platforms; connect related objects with subtle paths or arrows
+
+### TEXT RULE (GPT-Image2 renders Japanese reasonably well — follow the per-slide design)
+- Render the Japanese keywords / short labels specified in each slide's design brief. Prefer short keywords (2–8 chars) on clean GOLD (#C4A057) banner/tag elements with dark (#2C3330) text, placed beside the relevant object.
+- A concise slide title (provided per slide) MAY be rendered in the calm title band when the brief asks for it — keep it short and crisp, exactly as written, do not paraphrase or invent extra text.
+- Do NOT add words that the brief did not specify. No paragraphs of body copy. When the brief gives a set of labels, render those and nothing more.
+- Let the isometric objects carry most of the meaning; text anchors key concepts, it does not replace the illustration.
+
+### Layout for a slide
+- ONE clear focal concept, centered or with a left-to-right flow
+- Strong whitespace; do NOT fill the whole frame; no thumbnail-grid / contact-sheet look
+- Leave breathing room at top or one side for the (separately added) title
+- Readable hierarchy: main object largest, supporting objects smaller around it
+
+### Tone
+- Restrained, refined, grounded. The illustration supports the idea; it never overpowers it.
+
+## Content to visualize (per-slide concept follows):

@@ -1,0 +1,130 @@
+/* ============================================
+   slide-kit / themes / standard / theme.css
+
+   Slide Kit の既定テーマ。ブランドに寄らない中立的な見た目。
+   フォントは Gen Interface JP（PPTXに埋め込める・Mac/Win両対応）。
+
+   レイアウト層（references/type-b-patterns.md）は色を知らない。
+   色・フォントはすべてここで定義する。パターン側で Tailwind の色クラスや
+   hex直書きを使わないこと。
+   ============================================ */
+
+:root {
+  /* ---------- Palette ----------
+     地は白に寄せた紙、主役テキストは黒ではなく濃紺グレー。
+     真っ黒(#000)を使わないのは、投影時にコントラストが硬くなりすぎるため。 */
+  --brand-paper:  #FFFFFF;  /* 地の色 */
+  --brand-subtle: #F4F5F7;  /* 薄い面。カード・帯 */
+  --brand-muted:  #E3E6EA;  /* 罫線・境界 */
+  --brand-ink:    #1F2733;  /* 主役テキスト */
+  --ink-soft:     #4A5462;  /* 補助テキスト */
+  --ink-faint:    #8A94A2;  /* 控えめテキスト・注記 */
+
+  /* アクセントは1色だけ。希少性の三原則に従い、99%を抑えて1%を効かせる。
+     色を増やしたくなったら、まず「増やさずに済ませられないか」を疑う。 */
+  --brand-accent: #2D6BD4;
+  --accent-deep:  #1E4FA3;
+  --accent-tint:  #E8F0FC;  /* アクセントの薄い面。ハイライト背景 */
+
+  /* ---------- Typography ---------- */
+  --font-display: "Gen Interface JP Display", "Gen Interface JP", sans-serif;
+  --font-body:    "Gen Interface JP", sans-serif;
+
+  /* ジャンプ率: 見出しと本文の差を作りすぎない。読み物として落ち着く範囲 */
+  --size-hero:    64px;
+  --size-title:   40px;
+  --size-lead:    28px;
+  --size-body:    20px;
+  --size-caption: 15px;
+}
+
+/* ---------- Slide frame ---------- */
+.slide {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--brand-paper);
+  color: var(--brand-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--size-body);
+  line-height: 1.7;
+  /* 約物半角。Gen Interface JP が持つOpenType機能 */
+  font-feature-settings: "ss09" 1;
+}
+
+/* ---------- Backgrounds ---------- */
+.bg-paper  { background-color: var(--brand-paper); }
+.bg-subtle { background-color: var(--brand-subtle); }
+.bg-ink    { background-color: var(--brand-ink); color: var(--brand-paper); }
+.bg-accent { background-color: var(--brand-accent); color: #FFFFFF; }
+
+/* 章扉・表紙用。アクセントを面で使えるのはここだけ */
+.bg-cover {
+  background-color: var(--brand-ink);
+  color: var(--brand-paper);
+}
+.bg-cover .accent { color: #7FA9F0; }
+
+/* ---------- Text roles ---------- */
+.text-ink    { color: var(--brand-ink); }
+.text-soft   { color: var(--ink-soft); }
+.text-faint  { color: var(--ink-faint); }
+.text-accent { color: var(--brand-accent); }
+
+.hero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--size-hero);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--size-title);
+  line-height: 1.35;
+}
+.lead {
+  font-weight: 500;
+  font-size: var(--size-lead);
+  line-height: 1.55;
+}
+.body    { font-weight: 400; font-size: var(--size-body); }
+.caption { font-weight: 400; font-size: var(--size-caption); color: var(--ink-faint); }
+
+/* 強調。抽出型PPTX変換で run として拾われる。
+   b / strong / .accent が run セレクタなので、この3つ以外で強調しない。 */
+b, strong { font-weight: 700; color: var(--brand-ink); }
+.accent   { font-weight: 700; color: var(--brand-accent); }
+
+/* ---------- Components ---------- */
+.card {
+  background-color: var(--brand-subtle);
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+.card-outline {
+  background-color: var(--brand-paper);
+  border: 1px solid var(--brand-muted);
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+.highlight {
+  background-color: var(--accent-tint);
+  border-left: 4px solid var(--brand-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+}
+.rule {
+  height: 1px;
+  background-color: var(--brand-muted);
+  border: 0;
+}
+/* 章番号・ページ番号などの控えめなメタ表示 */
+.meta {
+  font-size: var(--size-caption);
+  color: var(--ink-faint);
+  letter-spacing: 0.08em;
+}

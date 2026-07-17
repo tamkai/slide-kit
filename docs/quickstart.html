@@ -1,0 +1,380 @@
+<title>Slide Kit はじめかた</title>
+<style>
+  /* ── Tokens ────────────────────────────────────────────────
+     配色はキット標準テーマ(themes/standard)から取る。
+     ニュートラルは青にわずかに寄せて、アクセントと地を馴染ませる。 */
+  :root {
+    --paper:      #FFFFFF;
+    --surface:    #F5F6F9;
+    --surface-2:  #EBEEF3;
+    --line:       #DDE2EA;
+    --ink:        #1F2733;
+    --ink-soft:   #4A5462;
+    --ink-faint:  #798393;
+    --accent:     #2D6BD4;
+    --accent-deep:#1E4FA3;
+    --accent-tint:#E8F0FC;
+    --warn:       #A8560F;
+    --warn-tint:  #FDF1E3;
+    --shadow: 0 1px 2px rgba(31,39,51,.05), 0 8px 24px -12px rgba(31,39,51,.18);
+
+    --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+                 "Yu Gothic UI", Meiryo, system-ui, sans-serif;
+    --font-mono: "SF Mono", "Cascadia Mono", "Consolas", "Menlo", monospace;
+
+    --step-0: 1rem;
+    --step-1: 1.1875rem;
+    --step-2: 1.5rem;
+    --step-3: 2rem;
+    --step-4: 2.75rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:      #12161C;
+      --surface:    #1A2029;
+      --surface-2:  #232B36;
+      --line:       #2E3844;
+      --ink:        #E7ECF3;
+      --ink-soft:   #AEB8C6;
+      --ink-faint:  #7C8797;
+      --accent:     #6BA1F0;
+      --accent-deep:#9CC2F7;
+      --accent-tint:#182636;
+      --warn:       #E0A063;
+      --warn-tint:  #2A2119;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#12161C; --surface:#1A2029; --surface-2:#232B36; --line:#2E3844;
+    --ink:#E7ECF3; --ink-soft:#AEB8C6; --ink-faint:#7C8797;
+    --accent:#6BA1F0; --accent-deep:#9CC2F7; --accent-tint:#182636;
+    --warn:#E0A063; --warn-tint:#2A2119;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"] {
+    --paper:#FFFFFF; --surface:#F5F6F9; --surface-2:#EBEEF3; --line:#DDE2EA;
+    --ink:#1F2733; --ink-soft:#4A5462; --ink-faint:#798393;
+    --accent:#2D6BD4; --accent-deep:#1E4FA3; --accent-tint:#E8F0FC;
+    --warn:#A8560F; --warn-tint:#FDF1E3;
+    --shadow: 0 1px 2px rgba(31,39,51,.05), 0 8px 24px -12px rgba(31,39,51,.18);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  /* ── Header ── */
+  .masthead { display: flex; flex-direction: column; gap: .75rem; }
+  .eyebrow {
+    font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700;
+  }
+  h1 {
+    font-size: var(--step-4); line-height: 1.15; font-weight: 700;
+    letter-spacing: -.02em; text-wrap: balance; margin: 0;
+  }
+  .standfirst {
+    font-size: var(--step-1); color: var(--ink-soft); text-wrap: pretty;
+    max-width: 34rem;
+  }
+
+  section { display: flex; flex-direction: column; gap: 1rem; }
+  h2 {
+    font-size: var(--step-2); font-weight: 700; letter-spacing: -.01em;
+    margin: 0; text-wrap: balance;
+    padding-bottom: .6rem; border-bottom: 1px solid var(--line);
+  }
+  h3 { font-size: var(--step-1); font-weight: 700; margin: 0; }
+  p  { margin: 0; text-wrap: pretty; }
+  .lead { font-size: var(--step-1); }
+  strong { font-weight: 700; }
+  .em { color: var(--accent); font-weight: 700; }
+
+  /* ── 二段階の図 ── */
+  .stages { display: flex; flex-direction: column; gap: 0; }
+  .stage {
+    display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.25rem;
+    padding: 1.5rem 0;
+  }
+  .stage + .stage { border-top: 1px dashed var(--line); }
+  .stage-num {
+    font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
+    color: var(--accent); line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+  }
+  .stage-body { display: flex; flex-direction: column; gap: .4rem; }
+  .stage-say {
+    font-family: var(--font-mono); font-size: .9375rem;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 6px; padding: .5rem .75rem; align-self: flex-start;
+    max-width: 100%; overflow-x: auto; white-space: nowrap;
+  }
+  .stage-note { color: var(--ink-soft); font-size: .9375rem; }
+
+  /* 一番大事な一文をここだけ強く出す */
+  .keystone {
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    display: flex; flex-direction: column; gap: .5rem;
+  }
+  .keystone p { font-size: var(--step-1); }
+
+  /* ── コード ── */
+  pre {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 1rem 1.25rem;
+    overflow-x: auto; margin: 0;
+  }
+  code {
+    font-family: var(--font-mono); font-size: .875rem; line-height: 1.9;
+  }
+  p code, li code, td code {
+    background: var(--surface-2); border-radius: 4px;
+    padding: .1em .4em; font-size: .875em;
+  }
+  .cmt { color: var(--ink-faint); }
+
+  /* ── 表 ── */
+  .table-scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .9375rem; }
+  th, td {
+    text-align: left; padding: .75rem 1rem;
+    border-bottom: 1px solid var(--line); vertical-align: top;
+  }
+  th {
+    font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 700; white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  .yes { color: var(--accent); font-weight: 700; }
+  .no  { color: var(--ink-faint); }
+
+  /* ── 注意 ── */
+  .note {
+    background: var(--warn-tint); border: 1px solid color-mix(in srgb, var(--warn) 25%, transparent);
+    border-radius: 8px; padding: 1rem 1.25rem;
+    display: flex; flex-direction: column; gap: .4rem;
+  }
+  .note-label {
+    font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+    font-weight: 700; color: var(--warn);
+  }
+  .note p { font-size: .9375rem; }
+
+  ul { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: .4rem; }
+  li::marker { color: var(--ink-faint); }
+
+  a { color: var(--accent); text-underline-offset: .2em; }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px;
+  }
+
+  details {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 1rem 1.25rem;
+  }
+  summary { cursor: pointer; font-weight: 700; }
+  details[open] summary { margin-bottom: .75rem; }
+  details > div { display: flex; flex-direction: column; gap: .75rem; }
+
+  footer {
+    border-top: 1px solid var(--line); padding-top: 1.5rem;
+    color: var(--ink-faint); font-size: .875rem;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Slide Kit</div>
+    <h1>スライドは、二段階で作る</h1>
+    <p class="standfirst">
+      Claude Code でスライドを作るためのキットです。
+      入れ方と、使い方の考え方を1ページにまとめました。
+    </p>
+  </header>
+
+  <section>
+    <h2>いちばん大事なこと</h2>
+    <p class="lead">
+      このキットは、スライドを<strong>「構成をつくる」と「スライドにする」の二段階</strong>に分けます。
+      面倒に見えますが、これが速さの理由です。
+    </p>
+    <div class="keystone">
+      <p>
+        「スライド作って」と一息で頼むと、AIは<strong>話の順番と見た目を同時に</strong>決めてしまいます。
+        すると、直したいのが順番だけでも、<strong>毎回デッキ全体が作り直し</strong>になります。
+      </p>
+      <p>
+        先に<span class="em">構成だけ</span>を作って人が読む。
+        そこを直してからスライドにする。それだけで、やり直しが劇的に減ります。
+      </p>
+    </div>
+
+    <div class="stages">
+      <div class="stage">
+        <div class="stage-num">1</div>
+        <div class="stage-body">
+          <h3>構成をつくる</h3>
+          <div class="stage-say">この原稿からスライド構成を作って</div>
+          <p class="stage-note">
+            何枚にするか、各枚で何を言うかの一覧が出てきます。まだ絵は出ません。
+            <strong>ここで止まるので、遠慮なく直してください。</strong>
+            「3枚目と4枚目を入れ替えて」「この山は2枚に割って」で通ります。
+          </p>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">2</div>
+        <div class="stage-body">
+          <h3>スライドにする</h3>
+          <div class="stage-say">これをスライドにして</div>
+          <p class="stage-note">
+            2種類のどちらで作るか聞かれます（次の項目）。
+            最後にスピーカーノート入りの PowerPoint が出てきます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2種類から選ぶ</h2>
+    <p>
+      聞かれたら、<strong>あとで文字を直す可能性があるかどうか</strong>だけで決めてください。
+      迷ったら B が安全です。
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th></th><th>A. 画像スライド</th><th>B. 編集できるスライド</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>見た目</th>
+            <td>AIイラストで世界観が強い</td>
+            <td>崩れない・端正</td>
+          </tr>
+          <tr>
+            <th>あとで文字を直す</th>
+            <td class="no">できない</td>
+            <td class="yes">できる</td>
+          </tr>
+          <tr>
+            <th>途中の確認</th>
+            <td>できた画像を見る</td>
+            <td>ブラウザで見る</td>
+          </tr>
+          <tr>
+            <th>向いている場面</th>
+            <td>内容が固まった講演・発表</td>
+            <td>回覧して直しが入る資料</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <div class="note-label">A を選ぶときの注意</div>
+      <p>
+        画像スライドは、文字が絵に焼き込まれます。
+        <strong>PowerPointを開いても文字は直せません</strong>。誤字が見つかったら作り直しです。
+      </p>
+      <p>
+        また画像生成は、通常の作業の<strong>3〜5倍の速さで使用量を消費します</strong>。
+        まず代表3枚で試してから全部を作る、という進め方をAIが提案します。乗ってください。
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>入れる</h2>
+    <p>Claude Code を開いて、上から順に貼るだけです。1回やれば終わりです。</p>
+
+    <h3>1. キット本体</h3>
+<pre><code>/plugin marketplace add YOUR-ACCOUNT/slide-kit
+/plugin install slide-kit@slide-kit</code></pre>
+
+    <h3>2. 画像スライド（A）を使うなら、これも</h3>
+<pre><code>/plugin marketplace add openai/codex-plugin-cc
+/plugin install codex@openai-codex</code></pre>
+    <p class="stage-note">
+      画像生成には Codex 側の有料プランが必要です。B しか使わないなら、これは飛ばして構いません。
+    </p>
+
+    <h3>3. 準備する</h3>
+<pre><code>/slide-setup</code></pre>
+    <p>
+      必要なものを調べて、足りなければ自動で入れます。フォントも自動で入ります（管理者権限は不要）。
+      <strong>数分かかることがあります</strong>。終わると、AとBのどちらが使えるか教えてくれます。
+    </p>
+  </section>
+
+  <section>
+    <h2>使う</h2>
+    <p>覚えるのは、この2つだけです。</p>
+<pre><code>この原稿からスライド構成を作って   <span class="cmt"># ← 構成が出る。ここで直す</span>
+これをスライドにして              <span class="cmt"># ← A/B を聞かれる</span></code></pre>
+    <p>
+      原稿はファイルを渡しても、その場に貼り付けても構いません。
+      「誰に向けた、何のための資料か」を一緒に伝えると、構成の精度が上がります。
+    </p>
+  </section>
+
+  <section>
+    <h2>見た目を変えたいとき</h2>
+    <p>
+      画像スライド（A）の世界観は、差し替えられます。
+      <a href="https://notebooklm-slide-gallery.shirakippt.chatgpt.site/" target="_blank" rel="noopener">スライドスタイルのギャラリー</a>
+      に160種類のデザインが公開されているので、好きなものを選んで
+      「YAMLをコピー」し、そのまま Claude Code に貼って
+      <strong>「このスタイルで作って」</strong>と言えば通ります。
+    </p>
+    <p class="stage-note">
+      ギャラリーは KUMIKO SHIRAKI 氏の制作物です。ライセンス表記が見当たらないため、
+      商用案件で使う場合は事前に確認するのが安全です。
+    </p>
+  </section>
+
+  <section>
+    <h2>困ったとき</h2>
+<pre><code>/slide-setup</code></pre>
+    <p>
+      まずこれを打ってください。環境を調べ直して、直せるものは自動で直します。
+      これで解決しないときは、<strong>画面に出ているエラーをそのまま貼り付けて</strong>
+      「これどういう意味？」と聞けば、たいてい進めます。
+    </p>
+
+    <details>
+      <summary>よくあること</summary>
+      <div>
+        <ul>
+          <li><strong>PowerPointで文字が明朝体になっている</strong> — フォントが入っていません。<code>/slide-setup</code> を実行してから、PowerPointを開き直してください。</li>
+          <li><strong>作ったPPTXを人に送ったら見た目が崩れた</strong> — 相手にフォントがないためです。PowerPointの「ファイルにフォントを埋め込む」を有効にして保存し直すと崩れません。</li>
+          <li><strong>画像スライドが作れないと言われた</strong> — Codex の画像生成が使えない環境です。Windowsで起きやすい既知の不具合です。編集できるスライド（B）は使えます。</li>
+          <li><strong>構成が気に入らない</strong> — スライドにする前に、遠慮なく何度でも直してください。ここで直すのが一番安上がりです。</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    Slide Kit — <code>slide-plan</code>（構成をつくる） / <code>slide-make</code>（スライドにする） / <code>slide-setup</code>（準備・診断）
+  </footer>
+
+</div>

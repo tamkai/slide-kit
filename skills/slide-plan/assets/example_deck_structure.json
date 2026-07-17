@@ -1,0 +1,103 @@
+{
+  "deck_title": "会議の議事録を、その日のうちに配る",
+  "audience": "議事録作成に毎回1時間以上かけている事務・企画職。ITは得意ではない",
+  "style_ref": "isometric",
+  "slides": [
+    {
+      "n": 1,
+      "title": "議事録を、その日のうちに",
+      "key_message": "議事録は、翌日に回した瞬間から価値が落ちていきます。今日中に配れる形を作ります。",
+      "labels": ["議事録", "当日配布", "時短"],
+      "visual_brief": "An isometric desk scene: a meeting room table with a laptop, and a document flying out of it toward a clock showing the same day. Warm light. The document is the hero object, clearly in focus.",
+      "source_section": "導入",
+      "speaker_note": "まず結論から。今日の目的は「議事録を速く書く技術」ではなく「その日のうちに配れる状態を作ること」です。",
+      "body_text": "議事録は鮮度が命。\n翌日に回すと記憶が薄れる。\n今日中に配る形を作る。",
+      "lead_B": "議事録は、鮮度が命。",
+      "body_B": "翌日に回した議事録は、参加者の記憶が薄れてから届きます。\nその日のうちに配れる形を、この30分で作ります。"
+    },
+    {
+      "n": 2,
+      "title": "遅いのは書く工程ではない",
+      "key_message": "議事録が遅れる原因は、書く速さではなく「何を書くか迷う時間」です。",
+      "labels": ["原因", "迷う時間", "判断"],
+      "visual_brief": "An isometric hourglass split into two chambers of very different sizes: a tiny chamber holding a pen (writing), and a huge chamber holding a question mark (deciding what to write). The huge chamber is the hero object.",
+      "source_section": "問題提起",
+      "speaker_note": "ここが今日いちばん伝えたい所。手が遅いのではなく、判断で止まっている。",
+      "body_text": "書く時間は実は短い。\n長いのは何を書くか迷う時間。\nそこを先に決める。",
+      "lead_B": "遅いのは、手ではなく判断。",
+      "body_B": "実際に文字を打っている時間は、思ったより短いものです。\n時間を食っているのは「何を書くか」で迷っている時間の方です。"
+    },
+    {
+      "n": 3,
+      "title": "決まったことだけを書く",
+      "key_message": "発言の全部を書く必要はありません。決定事項と宿題だけで議事録は機能します。",
+      "labels": ["決定事項", "宿題", "担当", "期限"],
+      "visual_brief": "An isometric funnel: a messy cloud of speech bubbles pours in from the top, and only four clean cards drop out the bottom, showing a checkmark, a task box, a person, and a calendar. The four cards are the hero objects.",
+      "source_section": "本論・原則",
+      "speaker_note": "全部書こうとするから終わらない。残すのは4つだけと決めてしまう。",
+      "body_text": "発言録は要らない。\n決定事項・宿題・担当・期限。\nこの4つだけ残す。",
+      "lead_B": "残すのは、4つだけ。",
+      "body_B": "発言を全部書き起こす必要はありません。\n決定事項、宿題、担当、期限。この4つが揃っていれば議事録として機能します。"
+    },
+    {
+      "n": 4,
+      "title": "会議中に書き終える",
+      "key_message": "会議が終わってから書き始めるのをやめます。画面に映しながら、その場で埋めます。",
+      "labels": ["会議中", "画面共有", "その場で"],
+      "visual_brief": "An isometric meeting room where a shared screen displays a document being filled in live, and participants point at it. The glowing screen is the hero object.",
+      "source_section": "本論・手順",
+      "speaker_note": "画面に出すと、参加者が勝手に間違いを直してくれる。これが一番効く。",
+      "body_text": "終わってから書き始めない。\n画面に映してその場で埋める。\n参加者が直してくれる。",
+      "lead_B": "会議中に、書き終える。",
+      "body_B": "終わってから書き始めるので遅くなります。\n画面に映しながらその場で埋めると、参加者がその場で間違いを直してくれます。"
+    },
+    {
+      "n": 5,
+      "title": "型を1つ持っておく",
+      "key_message": "毎回ゼロから書くから迷います。同じ型を使い回せば、考えるのは中身だけになります。",
+      "labels": ["型", "使い回し", "埋めるだけ"],
+      "visual_brief": "An isometric stencil plate hovering just above a sheet of paper, with shapes already cut out so text drops neatly into place. The stencil is the hero object.",
+      "source_section": "本論・仕組み",
+      "speaker_note": "型があると、考えるのは中身だけになる。型そのものを毎回作らない。",
+      "body_text": "毎回ゼロから書かない。\n同じ型を使い回す。\n考えるのは中身だけ。",
+      "lead_B": "型は、使い回す。",
+      "body_B": "毎回ゼロから書き起こすので迷います。\n同じ型を1つ持っておけば、あとは中身を埋めるだけになります。"
+    },
+    {
+      "n": 6,
+      "title": "配る前に3点だけ見る",
+      "key_message": "完璧に読み返さなくていい。担当・期限・決定事項の3点だけ確認して出します。",
+      "labels": ["担当", "期限", "決定事項"],
+      "visual_brief": "An isometric checklist card receiving exactly three stamped checkmarks, while an envelope is already flying away in the background. The three checkmarks are the hero objects.",
+      "source_section": "本論・品質",
+      "speaker_note": "全文を読み返すと、そこでまた30分溶ける。見るのは3点だけと決める。",
+      "body_text": "全文の読み返しは不要。\n担当・期限・決定事項の3点だけ。\n確認したら出す。",
+      "lead_B": "見るのは、3点だけ。",
+      "body_B": "全文を読み返すと、そこでまた時間が溶けます。\n担当、期限、決定事項。この3点だけ確認したら送ってしまいます。"
+    },
+    {
+      "n": 7,
+      "title": "明日からやること",
+      "key_message": "次の会議で、型を画面に出して、決まったことだけその場で埋めてみてください。",
+      "labels": ["次の会議", "画面に出す", "その場で埋める"],
+      "visual_brief": "An isometric calendar with tomorrow's date highlighted, and three stepping stones forming a short path toward it. The stepping stones are the hero objects.",
+      "source_section": "まとめ",
+      "speaker_note": "一気に全部変えなくていい。次の1回だけ試してもらえれば十分。",
+      "body_text": "次の会議で試す。\n型を画面に出す。\n決まったことだけ埋める。",
+      "lead_B": "次の1回だけ、試す。",
+      "body_B": "全部を一度に変えなくて大丈夫です。\n次の会議で、型を画面に出して、決まったことだけその場で埋めてみてください。"
+    },
+    {
+      "n": 8,
+      "title": "議事録を、その日のうちに",
+      "key_message": "決まったことだけを、会議中に、型に沿って。これだけで当日配布は現実になります。",
+      "labels": ["決まったことだけ", "会議中に", "型に沿って"],
+      "visual_brief": "The same isometric desk scene as slide 1, but now the document has landed cleanly in an inbox tray and the clock still shows the same day. Echoes the cover composition to close the loop.",
+      "source_section": "まとめ",
+      "speaker_note": "表紙と同じ絵に戻して締める。冒頭の約束が果たされた形。",
+      "body_text": "決まったことだけを。\n会議中に。\n型に沿って。",
+      "lead_B": "その日のうちに、配れる。",
+      "body_B": "決まったことだけを、会議中に、型に沿って書く。\nこの3つだけで、当日配布は現実になります。"
+    }
+  ]
+}

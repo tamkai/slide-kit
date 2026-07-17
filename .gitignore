@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+.DS_Store
+
+# 各自の作業成果物はリポジトリに入れない
+output/
+dist/
+*.pptx
+*.pdf

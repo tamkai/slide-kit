@@ -1,0 +1,151 @@
+/* ============================================
+   slide-make / themes / _base / placeholder.css
+
+   Photo / figure placeholder styles.
+
+   Design intent:
+   Placeholders are DELIBERATELY LOUD. The user (Tamkai) fills
+   them in by hand after generation. A subtle grey box would be
+   ignored and photos would never get added. So we use thick
+   dashed borders, visible hatching, and prominent labels.
+
+   Themes may override colors via CSS variables:
+     --placeholder-border-color
+     --placeholder-hatch-color-a
+     --placeholder-hatch-color-b
+     --placeholder-label-color
+   ============================================ */
+
+.photo-placeholder,
+.figure-placeholder {
+  position: relative;
+  border: 4px dashed var(--placeholder-border-color, #E85C5C);
+  background-color: var(--placeholder-hatch-color-a, #F5F5F5);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--placeholder-hatch-color-a, #F5F5F5),
+    var(--placeholder-hatch-color-a, #F5F5F5) 12px,
+    var(--placeholder-hatch-color-b, #E5E5E5) 12px,
+    var(--placeholder-hatch-color-b, #E5E5E5) 24px
+  );
+  color: var(--placeholder-label-color, #1A1A1A);
+  font-family: var(--font-accent, 'Inter', sans-serif);
+  overflow: hidden;
+}
+
+/* Labels sit at TOP-LEFT so they remain visible even when the
+   placeholder has a text overlay on top (e.g. Pattern 48 keyword). */
+.photo-placeholder .placeholder-label,
+.figure-placeholder .placeholder-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--placeholder-label-bg, rgba(255,255,255,0.95));
+  border: 2px solid var(--placeholder-border-color, #E85C5C);
+  z-index: 3;
+}
+
+.photo-placeholder .placeholder-hint,
+.figure-placeholder .placeholder-hint {
+  position: absolute;
+  top: 3.5rem;
+  left: 0.75rem;
+  max-width: calc(100% - 1.5rem);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--placeholder-label-bg, rgba(255,255,255,0.95));
+  opacity: 0.95;
+  z-index: 3;
+}
+
+.photo-placeholder .placeholder-aspect {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--placeholder-border-color, #E85C5C);
+  color: var(--placeholder-label-bg, #FFFFFF);
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Aspect-ratio presets ----------
+   Use data-aspect="16:9" | "4:3" | "3:2" | "1:1" | "9:16" on the
+   placeholder element. The outer width is set by the layout; the
+   aspect-ratio property locks the height proportionally.
+*/
+.photo-placeholder[data-aspect="16:9"] { aspect-ratio: 16 / 9; }
+.photo-placeholder[data-aspect="4:3"]  { aspect-ratio: 4 / 3; }
+.photo-placeholder[data-aspect="3:2"]  { aspect-ratio: 3 / 2; }
+.photo-placeholder[data-aspect="1:1"]  { aspect-ratio: 1 / 1; }
+.photo-placeholder[data-aspect="9:16"] { aspect-ratio: 9 / 16; }
+
+/* ---------- Shape masks (Pattern 45 ほか) ----------
+   Use data-shape="circle" | "blob" to mask the placeholder.
+   Themes can add more shapes.
+*/
+.photo-placeholder[data-shape="circle"] {
+  clip-path: circle(50% at 50% 50%);
+  border-radius: 50%;
+}
+.photo-placeholder[data-shape="blob"] {
+  clip-path: path('M 50,10 Q 90,20 85,60 T 40,90 Q 5,70 15,35 T 50,10 Z');
+}
+
+/* ---------- Blend modes (Pattern 44 — notes 01 由来) ----------
+   "soft" blend means the real image should be exported with
+   background matching the slide paper color so the photo
+   appears to merge into the slide.
+*/
+.photo-placeholder[data-blend="soft"] {
+  border-style: dotted;
+  background-image: none;
+  background-color: var(--placeholder-blend-soft-bg, rgba(232,92,92,0.08));
+}
+
+/* ---------- Fullbleed placeholder (Patterns 48/49) ---------- */
+.photo-placeholder[data-fullbleed="true"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-width: 8px;
+}
+
+/* ---------- Visual type: photo vs diagram ----------
+   Use data-visual-type="photo" | "diagram" to declare whether
+   this slot holds a real photograph or a concept diagram.
+
+   Why this matters:
+   - photo   → gemini-image で自動生成可能（Imagen 4.0 等）
+   - diagram → AIランダム生成は狙いと一致しない。HTML/CSS/Mermaid/SVG
+               で構造的に描くべき。
+   The hatch pattern and label are tinted differently so the user
+   can tell at a glance which kind of placeholder they are looking
+   at. Diagram uses a cooler teal-ish tint to distinguish from
+   photo's warm red.
+*/
+.photo-placeholder[data-visual-type="diagram"],
+.figure-placeholder[data-visual-type="diagram"] {
+  --placeholder-border-color: #4A90B8;
+  --placeholder-hatch-color-a: #F0F6FA;
+  --placeholder-hatch-color-b: #D6E6F0;
+}
+
+.photo-placeholder[data-visual-type="diagram"] .placeholder-label::before,
+.figure-placeholder[data-visual-type="diagram"] .placeholder-label::before {
+  content: "DIAGRAM / ";
+  opacity: 0.7;
+}
+
+.photo-placeholder[data-visual-type="photo"] .placeholder-label::before {
+  content: "PHOTO / ";
+  opacity: 0.7;
+}
