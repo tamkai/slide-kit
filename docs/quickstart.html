@@ -139,10 +139,40 @@
   pre {
     background: var(--surface); border: 1px solid var(--line);
     border-radius: 8px; padding: 1rem 1.25rem;
-    overflow-x: auto; margin: 0;
+    margin: 0; position: relative;
+    /* コピーボタンのぶん右を空ける。コードが下に潜り込まないように */
+    padding-right: 6.5rem;
+    overflow-x: auto;
   }
   code {
     font-family: var(--font-mono); font-size: .875rem; line-height: 1.9;
+  }
+
+  /* コピーボタン。常時表示にする——ホバーで初めて出る形は、
+     渡す相手が「押せるもの」だと気づけない */
+  .copy-btn {
+    position: absolute; top: .6rem; right: .6rem;
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-family: var(--font-body); font-size: .75rem; font-weight: 700;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--line); border-radius: 6px;
+    padding: .3rem .6rem; cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .copy-btn:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  .copy-btn[data-state="done"] {
+    color: #FFFFFF; background: var(--accent); border-color: var(--accent);
+  }
+  .copy-btn[data-state="fail"] {
+    color: var(--warn); border-color: var(--warn);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .copy-btn { transition: none; }
   }
   p code, li code, td code {
     background: var(--surface-2); border-radius: 4px;
@@ -444,3 +474,77 @@ codex plugin add slide-kit@slide-kit</code></pre>
   </footer>
 
 </div>
+
+<script>
+  (() => {
+    // コピー対象のテキストを作る。
+    // 注意: 解説コメント(.cmt)は落とす。「# ← 構成が出る」まで貼られると事故る。
+    const textOf = (codeEl) => {
+      const clone = codeEl.cloneNode(true);
+      clone.querySelectorAll(".cmt").forEach((el) => el.remove());
+      return clone.textContent
+        .split("\n")
+        .map((line) => line.replace(/\s+$/, ""))  // コメント削除で残る右側の空白を掃除
+        .filter((line, i, arr) => line !== "" || (i > 0 && i < arr.length - 1))
+        .join("\n")
+        .trim();
+    };
+
+    const copy = async (text) => {
+      // file:// でも navigator.clipboard は使えることが多いが、
+      // 環境によっては落ちるので execCommand に退避する
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (e) { /* 退避へ */ }
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    document.querySelectorAll("pre").forEach((pre) => {
+      const code = pre.querySelector("code");
+      if (!code) return;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "copy-btn";
+      btn.textContent = "コピー";
+      // 何をコピーするのかを読み上げにも伝える
+      btn.setAttribute("aria-label", "このコマンドをコピー");
+
+      let timer = null;
+      btn.addEventListener("click", async () => {
+        const ok = await copy(textOf(code));
+        clearTimeout(timer);
+        if (ok) {
+          btn.textContent = "コピーしました";
+          btn.dataset.state = "done";
+        } else {
+          // 失敗を黙らない。手動で選べることを伝える
+          btn.textContent = "コピーできません";
+          btn.dataset.state = "fail";
+        }
+        timer = setTimeout(() => {
+          btn.textContent = "コピー";
+          delete btn.dataset.state;
+        }, 2000);
+      });
+
+      pre.appendChild(btn);
+    });
+  })();
+</script>
