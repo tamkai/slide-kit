@@ -205,7 +205,7 @@
     <div class="eyebrow">Slide Kit</div>
     <h1>スライドは、二段階で作る</h1>
     <p class="standfirst">
-      Claude Code でスライドを作るためのキットです。
+      Claude Code / Codex でスライドを作るためのキットです。
       入れ方と、使い方の考え方を1ページにまとめました。
     </p>
   </header>
@@ -304,25 +304,41 @@
 
   <section>
     <h2>入れる</h2>
-    <p>Claude Code を開いて、上から順に貼るだけです。1回やれば終わりです。</p>
-
-    <h3>1. キット本体</h3>
-<pre><code>/plugin marketplace add YOUR-ACCOUNT/slide-kit
-/plugin install slide-kit@slide-kit</code></pre>
-
-    <h3>2. 画像スライド（A）を使うなら、これも</h3>
-<pre><code>/plugin marketplace add openai/codex-plugin-cc
-/plugin install codex@openai-codex</code></pre>
-    <p class="stage-note">
-      画像生成には Codex 側の有料プランが必要です。B しか使わないなら、これは飛ばして構いません。
+    <p>
+      <strong>Claude Code でも Codex でも使えます。</strong>
+      お使いの方だけを読んでください。1回やれば終わりです。
     </p>
 
-    <h3>3. 準備する</h3>
+    <h3>Claude Code をお使いの場合</h3>
+<pre><code>/plugin marketplace add tamkai/slide-kit
+/plugin install slide-kit@slide-kit</code></pre>
+    <p class="stage-note">
+      画像スライド（A）も使うなら、続けてこれも。B しか使わないなら飛ばして構いません。
+    </p>
+<pre><code>/plugin marketplace add openai/codex-plugin-cc
+/plugin install codex@openai-codex</code></pre>
+
+    <h3>Codex をお使いの場合</h3>
+<pre><code>codex plugin marketplace add tamkai/slide-kit --ref main
+codex plugin add slide-kit@slide-kit</code></pre>
+    <p class="stage-note">
+      画像生成は Codex に組み込みなので、追加のプラグインは要りません。
+    </p>
+
+    <h3>準備する（共通）</h3>
 <pre><code>/slide-setup</code></pre>
     <p>
       必要なものを調べて、足りなければ自動で入れます。フォントも自動で入ります（管理者権限は不要）。
       <strong>数分かかることがあります</strong>。終わると、AとBのどちらが使えるか教えてくれます。
     </p>
+    <div class="note">
+      <div class="note-label">Codex をお使いの方へ</div>
+      <p>
+        Codex は安全のため、既定でインターネット接続を止めています。
+        準備中に<strong>接続の許可を聞かれたら、許可してください</strong>（フォントのダウンロードに使います）。
+        許可できない場合は、手動での入れ方が案内されます。
+      </p>
+    </div>
   </section>
 
   <section>

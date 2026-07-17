@@ -1,0 +1,11 @@
+{
+  "name": "slide-kit",
+  "version": "0.1.0",
+  "description": "構成をつくる → スライドにする の二段階でスライドを作るキット。画像スライドと編集可能スライドの両方に対応。",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Slide Kit",
+    "category": "Productivity"
+  }
+}
