@@ -10,7 +10,7 @@
  *   node build_pptx_from_images.js ./deck_structure.json ./images   ./Deck_A.pptx
  *   node build_pptx_from_images.js ./deck_structure.json ./images_B ./Deck_B.pptx
  *
- * 依存: このスクリプトと同じディレクトリで一度だけ `npm install` する。
+ * 依存: このスクリプトと同じディレクトリで一度だけ `npm ci` する。
  */
 const path = require('path');
 const fs = require('fs');
@@ -21,7 +21,7 @@ try {
   PptxGenJS = require('pptxgenjs');
 } catch (e) {
   console.error('pptxgenjs が見つかりません。次を実行してください:');
-  console.error(`  cd "${__dirname}" && npm install`);
+  console.error(`  cd "${__dirname}" && npm ci`);
   process.exit(1);
 }
 

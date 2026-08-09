@@ -87,7 +87,7 @@ python3 <plugin>/skills/slide-make/scripts/collect_images.py <images_dir> mappin
 ### Step 5: PPTX化する
 
 ```bash
-cd <plugin>/skills/slide-make/scripts && npm install    # 初回のみ
+cd <plugin>/skills/slide-make/scripts && npm ci    # 初回のみ
 node <plugin>/skills/slide-make/scripts/build_pptx_from_images.js \
      deck_structure.json <images_dir> <out.pptx>
 ```

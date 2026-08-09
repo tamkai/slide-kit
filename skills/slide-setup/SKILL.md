@@ -58,11 +58,16 @@ v18以上が必要。
 ### 2. PPTX組み立ての依存（pptxgenjs）
 
 ```bash
-cd <plugin>/skills/slide-make/scripts && npm install
+cd <plugin>/skills/slide-make/scripts && npm ci
 ```
 
 **このキットは自前で `node_modules` を持つ**（他のスキルから借りない）。
 初回は数十秒かかる。`node_modules` はリポジトリに入っていないので、各自の環境で必ず1度必要。
+
+`npm install` ではなく **`npm ci`** を使う。`package-lock.json` に書かれた
+バージョンとハッシュのとおりに入るので、**全員が同じものを使う**状態になる。
+`npm install` は解決をやり直すため、上流が差し替わったものをそのまま拾ってしまう。
+（`npm ci` が使えない古い npm の場合だけ `npm install` でよい）
 
 ### 3. Python 3
 

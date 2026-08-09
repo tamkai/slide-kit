@@ -70,7 +70,7 @@ python3 <plugin>/skills/slide-make/scripts/extract_html.py "slides/*.html" dist/
 ### Step 4: PPTX化する
 
 ```bash
-cd <plugin>/skills/slide-make/scripts && npm install    # 初回のみ
+cd <plugin>/skills/slide-make/scripts && npm ci    # 初回のみ
 node <plugin>/skills/slide-make/scripts/build_pptx_from_html.js \
      dist/extract dist/deck.pptx deck_structure.json
 ```

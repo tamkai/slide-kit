@@ -1,6 +1,9 @@
 node_modules/
-package-lock.json
 .DS_Store
+
+# package-lock.json は「入れる」。全員が同じバージョンで動くようにするため。
+# 除外していた頃は npm install のたびに解決が変わり、
+# 上流が差し替わったものをそのまま拾う状態だった。
 
 # 各自の作業成果物はリポジトリに入れない
 output/
