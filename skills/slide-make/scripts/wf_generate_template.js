@@ -26,11 +26,11 @@ function promptFor(n) {
     ? `【レイアウト＝上下2分割（厳守）】
 - 上段(約45%)=テキスト主役: 地よりわずかに明るい/縁取りのある横長パネル(角丸・軽い影)の上に文字を載せる(浮かせない)。上から: 小さめタイトル(title) → 大きい結論ひとこと(lead_B) → 小さめ本文2〜3行(body_B)。タイトル<結論<本文 のサイズ階層を明確に。
 - 下段(約55%)=横長アイソメ図: 16:9横幅いっぱいの横長ジオラマ(visual_brief)。`
-    : `【レイアウト＝文字少・図主役】上部に短いタイトル帯(title)+大きな図(visual_brief)+たっぷり余白。本文は焼かない。`
+    : `【レイアウト＝講演用（Bと同等の情報量）】テキストゾーン(title特大 + lead_B結論ひとこと + body_B小さめ本文2〜3行 + 小さなキャプション)と図(visual_brief)のゾーンを非対称バランスで。title<lead_B<body_Bのサイズ階層を明確に。たっぷり余白。クライマックス等で文字少・図主役にする枚は、呼び出し側で明示指定した時のみtitleだけに絞る。`
 
   const textFields = TYPE === 'B'
     ? `title / lead_B / body_B / visual_brief`
-    : `title / visual_brief`
+    : `title / lead_B / body_B / visual_brief`
 
   return `あなたはセミナースライドの画像を1枚生成するデザイナー。Codex組み込みの image_gen で描く(ImageMagick等にフォールバックしない)。${TARGETS.length}枚組デッキの1枚で、全枚の世界観を厳密に揃える。
 
