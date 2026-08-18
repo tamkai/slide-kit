@@ -25,18 +25,18 @@ function promptFor(n) {
   const layout = TYPE === 'B'
     ? `【レイアウト＝上下2分割（厳守）】
 - 上段(約45%)=テキスト主役: 地よりわずかに明るい/縁取りのある横長パネル(角丸・軽い影)の上に文字を載せる(浮かせない)。上から: 小さめタイトル(title) → 大きい結論ひとこと(lead_B) → 小さめ本文2〜3行(body_B)。タイトル<結論<本文 のサイズ階層を明確に。
-- 下段(約55%)=横長アイソメ図: 16:9横幅いっぱいの横長ジオラマ(visual_brief)。金タグ(labels)を脇に。`
-    : `【レイアウト＝文字少・図主役】上部に短いタイトル帯(title)+大きな図(visual_brief)+金タグ(labels)+たっぷり余白。本文は焼かない。`
+- 下段(約55%)=横長アイソメ図: 16:9横幅いっぱいの横長ジオラマ(visual_brief)。`
+    : `【レイアウト＝文字少・図主役】上部に短いタイトル帯(title)+大きな図(visual_brief)+たっぷり余白。本文は焼かない。`
 
   const textFields = TYPE === 'B'
-    ? `title / lead_B / body_B / visual_brief / labels`
-    : `title / visual_brief / labels`
+    ? `title / lead_B / body_B / visual_brief`
+    : `title / visual_brief`
 
   return `あなたはセミナースライドの画像を1枚生成するデザイナー。Codex組み込みの image_gen で描く(ImageMagick等にフォールバックしない)。${TARGETS.length}枚組デッキの1枚で、全枚の世界観を厳密に揃える。
 
 【スタイル定義(厳守)】${STYLE} を読む。配色・質感・トーン・16:9・余白ルールを厳守。横長・ワイド・16:9・landscape widescreen と方向語を重ねる。
 ${SAMPLES.length ? `【お手本(世界観の基準)】\n- ${sampleRefs}\n同じ質感・配色・体裁に揃える。ただし内容は下記スライドのもので、隣のスライドの絵をコピーしない(取り違え厳禁)。` : ''}
-【構成】${DECK} の "n": ${n} を使う。使うフィールド: ${textFields}。speaker_noteは画像に入れない。
+【構成】${DECK} の "n": ${n} を使う。使うフィールド: ${textFields}。labels は画作りのヒント(何を描くか)として使い、**文字としては焼かない**。speaker_noteは画像に入れない。
 ${layout}
 指定した文字以外の文字・段落は描かない。ONE focal idea・余白優先。
 
