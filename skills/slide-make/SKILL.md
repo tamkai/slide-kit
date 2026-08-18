@@ -1,6 +1,6 @@
 ---
 name: slide-make
-description: 構成JSON（deck_structure.json）から実際のスライドを作る第2段階。タイプA（Codexで画像生成した見た目重視のスライド）とタイプB（HTMLから作る、あとでPowerPointで文字を直せるスライド）を選べる。どちらも最終形はスピーカーノート入りPPTX。"slide-make", "スライドにして", "スライド化", "画像スライド", "編集できるスライド", "PPTXにして" で発動。前段は slide-plan。
+description: 構成JSON（deck_structure.json）から実際のスライドを作る第2段階。タイプA（Codexで画像生成した見た目重視のスライド）、タイプB（HTMLから作る、あとでPowerPointで文字を直せるスライド）、タイプC（生成背景×編集可能文字のハイブリッド）を選べる。いずれも最終形はスピーカーノート入りPPTX。"slide-make", "スライドにして", "スライド化", "画像スライド", "編集できるスライド", "ハイブリッドスライド", "PPTXにして" で発動。前段は slide-plan。
 ---
 
 # slide-make — 構成をスライドにする（第2段階）
@@ -13,12 +13,13 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 
 構成JSONを受け取ったら、**作り始める前にこれだけ聞く**:
 
-> どちらで作りますか？
+> どれで作りますか？
 >
 > **A. 画像スライド** — AIイラストで世界観が強い。**あとから文字を直せません**（文字が絵に焼き込まれるため）
 > **B. 編集できるスライド** — PowerPointであとから文字を直せます。まずブラウザで確認しながら作ります
+> **C. ハイブリッド** — AI生成の背景アート（世界観A）×編集できる文字（B）。両取りだが手数は最多
 >
-> 迷ったら B。あとで直したくなる可能性があるなら B が安全です。
+> 迷ったら B。世界観も直しやすさも欲しいなら C（→ `references/type-c-hybrid.md`）。
 
 **この2択以外の質問を最初にしない。** テーマや色の話は、選択後に必要なら聞く。
 
@@ -31,11 +32,11 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 
 **A-1でも「文字少・図だけ」を既定にしない。** 図だけのスライドは話者が説明しないと成立せず、聞き手も置いていかれやすい。タイトル+lead_B+body_B を焼くのが基本形で、文字を削って図で見せるのはクライマックス等、意図した枚だけに使う（Tension Map で判断）。
 
-| | A-1 講演用 | A-2 読み物 | B 編集できる |
-|---|---|---|---|
-| 作り方 | Codexで画像生成 | Codexで画像生成＋テキスト重ね | HTML→PPTX変換 |
-| 想定 | 話者が喋る | **単体で読める** | 回覧・修正前提 |
-| 文字量 | 中（title+lead+本文2〜3行） | 多い（ビジーで可） | 中 |
+| | A-1 講演用 | A-2 読み物 | B 編集できる | C ハイブリッド |
+|---|---|---|---|---|
+| 作り方 | Codexで画像生成 | Codexで画像生成＋テキスト重ね | HTML→PPTX変換 | 文字なし背景を生成＋HTML文字→PPTX変換 |
+| 想定 | 話者が喋る | **単体で読める** | 回覧・修正前提 | 講演＋直前修正 |
+| 文字量 | 中（title+lead+本文2〜3行） | 多い（ビジーで可） | 中 | 中 |
 | タイトル/リード | 画像に焼く | **編集可能** | 編集可能 |
 | 本文 | 画像に焼く | 画像に焼く | 編集可能 |
 | 使用量 | 多い（3〜5倍速く消費） | 多い | 少ない |
@@ -77,6 +78,16 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 4. `collect_images.py` で回収・配置・**重複チェック**（codexは隣のスライドと同じ絵を作ることがある）
 5. `build_pptx_from_images.js` でPPTX化（スピーカーノート入り）
 
+## タイプC: ハイブリッド（生成背景 × 編集可能テキスト）
+
+→ **`references/type-c-hybrid.md` を読んで、そこの手順に従う。**
+
+要点だけ:
+1. 各スライドの**文字なし背景**を codex image_gen で生成（テキストゾーンを空けさせる）
+2. `scripts/typec_build_html.py` で deck_structure.json から HTML テキスト層を生成し、背景に重ねる
+3. 全枚スクリーンショットで**タイトル折返し・アートとの衝突を検品**（必ずユーザーに見せて止まる）
+4. 以降はタイプBと同じ（extract → build_pptx_from_html → fix_pptx）
+
 ## タイプB: 編集できるスライド
 
 → **`references/type-b-editable.md` を読んで、そこの手順に従う。**
@@ -103,7 +114,8 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 | `scripts/wf_generate_template.js` | タイプA: 並列生成ワークフローの雛形 |
 | `scripts/extract_html.py` | タイプB: HTML→フラット背景PNG＋テキスト構造JSON |
 | `scripts/build_pptx_from_html.js` | タイプB: 抽出結果→編集可能PPTX |
-| `scripts/fonts.js` | タイプB: ウェイト→フォント名マッピング（**必読**） |
+| `scripts/fonts.js` | タイプB/C: ウェイト→フォント名マッピング（**必読**） |
+| `scripts/typec_build_html.py` | タイプC: 構成JSON→背景付きHTMLテキスト層の生成（コピーしてTWEAKを編集） |
 | `scripts/fix_pptx.py` | 両タイプ: 生成後の必須修正 |
 | `styles/*.txt` | タイプA: 差し替え可能なスタイル定義。`infographic-readable.txt` はA-2専用（上部18%安全領域） |
 | `themes/` | タイプB: HTMLテーマ |
