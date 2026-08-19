@@ -39,6 +39,7 @@ body{{margin:0}}
   color:#121212;
 }}
 .txt{{position:absolute;left:72px;top:{top}px;width:{width}px;display:flex;flex-direction:column;gap:24px}}
+.furi{{font-weight:500;font-size:18px;line-height:1.6;color:#4F4F4F;margin:0 0 -6px}}
 .title{{font-family:"Gen Interface JP Display",sans-serif;font-weight:700;font-size:{title_size}px;line-height:1.32;letter-spacing:.01em;margin:0}}
 .lead{{font-weight:700;font-size:25px;line-height:1.5;margin:0}}
 .body{{font-weight:400;font-size:16.5px;line-height:1.9;color:#4F4F4F;margin:0;margin-top:{body_mt}px}}
@@ -48,7 +49,7 @@ body{{margin:0}}
 <body>
 <div class="slide">
   <div class="txt">
-    <h1 class="title">{title}</h1>
+    {furi_html}<h1 class="title">{title}</h1>
     <p class="lead">{lead}</p>
     <p class="body">{body}</p>
   </div>
@@ -71,6 +72,7 @@ for s in deck["slides"]:
         title_size=t.get("title_size", 62),
         body_mt=t.get("body_mt", 0),
         title=t.get("title", s["title"]),
+        furi_html=(f'<p class="furi">{s["furi"]}</p>' if s.get("furi") else ""),
         lead=s["lead_B"],
         body=t.get("body", s["body_B"].replace("\\n", "<br>").replace("\n", "<br>")),
         caption=s.get("caption", ""),
