@@ -23,6 +23,7 @@
 | 誰が何をするか | スイムレーン | フロー | 担当が主題なら、スイムレーン | strict |
 | 中心から広がる | マインドマップ | ハブとスポーク | 中心とのやり取りなら、ハブ | image |
 | 土台の上に積み重なる | ピラミッド | レイヤー図 | 優劣を含めたくなければ、レイヤー | image |
+| 全員が同じ傾きの上にいる | 勾配図（坂の比喩） | ピラミッド | 段に分かれないなら、坂 | image |
 | 内側に含まれる | 入れ子 | 同心円 | 中心との距離なら、同心円 | image |
 | 要素に分解する | ロジックツリー | ピラミッド | 枝が多ければ、枚数を分ける | strict |
 | 2つの軸で位置づける | 2軸マップ | 比較表 | 定性の位置づけなら、2軸 | strict |
@@ -41,10 +42,10 @@
 | 値 | 意味 | 扱い |
 |---|---|---|
 | `image` | 言葉の指示で描ける概念の図 | タイプDで作る |
-| `strict` | つながりや要素が多い図 | タイプDで作れるが、要素を減らし、検品を厳しくする。実証はまだ |
+| `strict` | つながりや要素が多い図 | タイプDで作れるが、要素を減らし、検品を厳しくする。実証は分岐フローのみ |
 | `exact` | 数値、座標、比率が主張の図 | 言葉の指示では正確に描けない。タイプBで作る |
 
-実証済みの型は、ベン図、直線フロー、循環図、マインドマップ、ピラミッドの5つ（2026-11-06）。
+実証済みの型は、ベン図、直線フロー、循環図、マインドマップ、ピラミッド、左右比較、勾配図、分岐フローの8つ（2026-11-06。それぞれ少数の例での確認）。
 
 ## 構成JSONに書く
 
@@ -84,6 +85,9 @@
 | 循環図 | EXACTLY FOUR stages in ONE CLOCKWISE closed loop. EXACTLY FOUR arrows, all clockwise. The center is a label and not a fifth stage. |
 | マインドマップ | ONE central node and EXACTLY SEVEN branches, one level deep. No links between branches. No branch implies rank or order. |
 | ピラミッド | EXACTLY FOUR stacked layers. The bottom is the foundation. Layer sizes are not data. |
+| 左右比較 | EXACTLY TWO models side by side, using the same roles on both sides. The right model is larger. No third model. |
+| 勾配図 | EXACTLY ONE continuous slope with ONE summit. Everyone stands on this slope and nobody stands off it. |
+| 分岐フロー | EXACTLY ONE start, ONE decision and TWO outcomes, connected by one-way arrows. No loop, no third branch. State which label leads to which outcome. |
 
 ## 事実を守る
 
