@@ -43,6 +43,7 @@ description: スライドの「構成」をつくる第1段階。原稿・ネタ
 - `references/design-tension_map.md` — **Tension Map 思考**（各スライドに tension スコアを付け、緩急を設計してからレイアウトを決める）
 - `references/design-accent_placement.md` — **Accent 配置5ポジション**（章扉・クライマックス・CTAへの accent 配置）
 - `references/self_audit_checklist.md` — 構成が単調になっていないかの自己監査
+- `references/diagram-selection.md` — **図解の型の選び方**（伝えたい関係から型を選び、変えてはいけない構造を書く）
 
 ## 構成JSONのスキーマ
 
@@ -61,6 +62,10 @@ description: スライドの「構成」をつくる第1段階。原稿・ネタ
 | `body_text` | （読ませ版用）簡潔体の説明文。`\n`区切りで2〜3行 |
 | `lead_B` | （読ませ版の上下分割用）大きく置く「結論ひとこと」1行・言い切り |
 | `body_B` | （読ませ版の上下分割用）敬体の本文。`\n`区切りで2〜3行 |
+| `diagram` | （任意・図解スライド用）型、選んだ理由、比べた候補、絶対に変えない構造。→ `references/diagram-selection.md` |
+| `on_slide` | （任意・slide-make タイプD用）画像に載せる文字の全リスト。ここに無い文字は描かれない |
+
+デッキ全体の任意欄 `cast` に登場人物を書く（タイプD用）。人物は画風ではなく内容なので、構成に持つ。
 
 `lead_B` / `body_B` は**タイプA（講演用）でも基本的に焼き込む**ようになったため、原則すべてのスライドで埋める（2026-08変更: 図だけのスライドは話者依存が強すぎるため、Bと同等の情報量が既定になった）。`body_text` は旧形式で、通常は不要。
 
@@ -98,6 +103,10 @@ description: スライドの「構成」をつくる第1段階。原稿・ネタ
 ### Step 3: 各スライドを設計する
 
 サブエージェント（general-purpose）に原稿全文と本スキーマを渡し、全スライドの構成JSONを起こさせるのが効率的。プロンプトには「純粋なJSONのみ返す・全フィールド記入・末尾カンマ禁止・バリッドなJSON」を必ず指定し、`assets/example_deck_structure.json` を出力形式の見本として渡す。
+
+**関係の構造が主張になるスライドには、図解の型を割り当てる。** `references/diagram-selection.md` を読み、候補を2つ以上比べて `diagram` を埋める。全スライドを図解にしない。
+
+**タイプDで作ると分かっているデッキ**は、全スライドに `on_slide` を書く。`lead_B` / `body_B` は自動では焼かれないので、載せる文は `on_slide` に入れる。
 
 ### Step 4: 読ませ版用テキストを足す（読ませ版を作る場合のみ）
 

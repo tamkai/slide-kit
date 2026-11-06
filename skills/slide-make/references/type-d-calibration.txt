@@ -1,0 +1,13 @@
+FOUR SLIDES IN THE SHEET (fixed test content, identical for every style so styles can be compared):
+
+Top-left, cover. Title in two lines: 「人とAIの共創で」「創造性がひらく働き方へ」. Small line: 「AIを"道具"から"創造のパートナー"へ」. One strong image of two different presences building one shared thing, drawn in whatever way this style draws its subjects.
+
+Top-right, Venn diagram. Title: 「人とAI、それぞれの強みの重なりが新しい価値を生む」. Contract: EXACTLY TWO overlapping sets and one shared overlap. No third set. Sizes are not data. Labels: left set 「人の強み」, overlap 「共創価値」, right set 「AIの強み」. The overlap is the focal point.
+
+Bottom-left, cycle diagram. Title: 「AIとともに回す、創造のループ」. Contract: EXACTLY FOUR stages in ONE CLOCKWISE closed loop, four arrows all clockwise, the last reconnects to the first. The center is a label and not a fifth stage. Top 「発見する」 → right 「考える」 → bottom 「つくる」 → left 「ふりかえる」 → back to top. Center label: 「創造の循環」.
+
+Bottom-right, flow diagram. Title: 「創造性を高めるAI活用のステップ」. Contract: EXACTLY FOUR steps connected left to right. No fifth step, no return arrow. 「1. 目的の設定」 → 「2. 試す・つくる」 → 「3. 共有・学ぶ」 → 「4. 定着・発展」. Keep the numbers.
+
+TEXT RULES: Render every Japanese string above EXACTLY, character for character, large enough to read. Accuracy of Japanese is the top priority. These diagram labels are required content, and they override any rule in the style about limiting text. Do not add, translate or invent any other text. No page numbers, no logos, no watermarks.
+
+The diagram must be readable from its arrangement alone, and it must be the main subject of each panel. Draw it in the world of the style, not in generic business-infographic shapes.

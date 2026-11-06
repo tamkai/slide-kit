@@ -1,6 +1,6 @@
 ---
 name: slide-make
-description: 構成JSON（deck_structure.json）から実際のスライドを作る第2段階。タイプA（Codexで画像生成した見た目重視のスライド）、タイプB（HTMLから作る、あとでPowerPointで文字を直せるスライド）、タイプC（生成背景×編集可能文字のハイブリッド）を選べる。いずれも最終形はスピーカーノート入りPPTX。"slide-make", "スライドにして", "スライド化", "画像スライド", "編集できるスライド", "ハイブリッドスライド", "PPTXにして" で発動。前段は slide-plan。
+description: 構成JSON（deck_structure.json）から実際のスライドを作る第2段階。タイプA（Codexで画像生成した見た目重視のスライド）、タイプB（HTMLから作る、あとでPowerPointで文字を直せるスライド）、タイプC（生成背景×編集可能文字のハイブリッド）、タイプD（図・絵・文字を丸ごと画像生成する図解スライド）を選べる。いずれも最終形はスピーカーノート入りPPTX。別の画風（文章・参照画像）を受け取って見本を作り、画風パックにするのもタイプDの手順。"slide-make", "スライドにして", "スライド化", "画像スライド", "編集できるスライド", "ハイブリッドスライド", "図解スライド", "図解にして", "この画風で", "PPTXにして" で発動。前段は slide-plan。
 ---
 
 # slide-make — 構成をスライドにする（第2段階）
@@ -18,11 +18,12 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 > **A. 画像スライド** — AIイラストで世界観が強い。**あとから文字を直せません**（文字が絵に焼き込まれるため）
 > **B. 編集できるスライド** — PowerPointであとから文字を直せます。まずブラウザで確認しながら作ります
 > **C. ハイブリッド** — AI生成の背景アート（世界観A）×編集できる文字（B）。両取りだが手数は最多
+> **D. 図解スライド** — 図・絵・文字を丸ごと画像生成。概念の図が画風の世界の中に描かれる。**あとから文字を直せません**
 >
-> 迷ったら B。世界観も直しやすさも欲しいなら C（→ `references/type-c-hybrid.md`）。
+> 迷ったら B。世界観も直しやすさも欲しいなら C（→ `references/type-c-hybrid.md`）。図解が主役で文字を直す必要がなければ D（→ `references/type-d-diagram.md`）。
 > Cの申し送り: **最後にPowerPoint側での微調整はひと手間残る**。それでも、生成アートのクオリティと全文字編集できる自由度が両方手に入るのはCだけ（2026-08 実戦での実感値）。
 
-**この2択以外の質問を最初にしない。** テーマや色の話は、選択後に必要なら聞く。
+**この選択以外の質問を最初にしない。** テーマや色の話は、選択後に必要なら聞く。
 
 **Aが選ばれたときだけ**、続けてもう1つ聞く:
 
@@ -89,6 +90,17 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 3. 全枚スクリーンショットで**タイトル折返し・アートとの衝突を検品**（必ずユーザーに見せて止まる）
 4. 以降はタイプBと同じ（extract → build_pptx_from_html → fix_pptx）
 
+## タイプD: 図解スライド
+
+→ **`references/type-d-diagram.md` を読んで、そこの手順に従う。** 新しい画風を渡されたら、先に **`references/type-d-style-intake.md`**。検品は **`references/type-d-qa.md`**。
+
+要点だけ:
+1. 画風は**描き方だけを切り出して**生成に渡す。キャストや題材が混ざると図を押しのける
+2. 新しい画風は、固定内容の見本を1枚作って本人に見せてから使う
+3. 一覧画像で世界観を確かめ、**本人に見せて止まる**。一覧のコマはそのまま使わない
+4. コマを参照に1枚ずつ清書し、基準の1枚で質感を揃える（`cockpit gen-image`）
+5. 構造を数えて確かめ、文字を1つずつ照合してから PPTX にする
+
 ## タイプB: 編集できるスライド
 
 → **`references/type-b-editable.md` を読んで、そこの手順に従う。**
@@ -117,6 +129,10 @@ slide-plan が作った構成JSON（`deck_structure.json`）から、実際の�
 | `scripts/build_pptx_from_html.js` | タイプB: 抽出結果→編集可能PPTX |
 | `scripts/fonts.js` | タイプB/C: ウェイト→フォント名マッピング（**必読**） |
 | `scripts/typec_build_html.py` | タイプC: 構成JSON→背景付きHTMLテキスト層の生成（コピーしてTWEAKを編集） |
+| `scripts/typed_build_prompts.py` | タイプD: 構成JSON＋画風パック→プロンプト一式と検品表。`--calibration` で画風の見本用 |
+| `scripts/typed_render.py` | タイプD: 一覧画像・清書・見本の生成、部分修正、確認用画像の作成 |
+| `scripts/typed_split_board.py` | タイプD: 一覧画像をコマに切り分ける（`typed_render.py` が自動で呼ぶ） |
+| `references/type-d-calibration.txt` | タイプD: 画風の見本の固定内容（変えない） |
 | `scripts/fix_pptx.py` | 両タイプ: 生成後の必須修正 |
 | `styles/*.txt` | タイプA: 差し替え可能なスタイル定義。`infographic-readable.txt` はA-2専用（上部18%安全領域） |
 | `themes/` | タイプB: HTMLテーマ |
